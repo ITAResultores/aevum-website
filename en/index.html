@@ -8,6 +8,13 @@
 <meta property="og:title" content="AEVUM · Revenue Operating System">
 <meta property="og:description" content="AI-Orchestrated Growth. Human-Governed. Eval-Proven.">
 <meta property="og:type" content="website">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-MZV9Q4G8');</script>
+<!-- End Google Tag Manager -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -155,6 +162,27 @@ nav.scrolled{background:rgba(12,21,38,.82);backdrop-filter:blur(14px);padding:18
 #hubspot-form-target:empty+.native-form{display:block}
 #hubspot-form-target:not(:empty)+.native-form{display:none}
 
+/* ░░ HUBSPOT FORM OVERRIDES — align to AEVUM brand system ░░ */
+.form-shell .hbspt-form,.form-shell .hs-form{font-family:var(--body);color:var(--platinum)}
+.form-shell .hs-form-field{margin-bottom:22px}
+.form-shell .hs-form-field>label,.form-shell .hs-form-field>label *{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:9px;font-weight:400;line-height:1.4}
+.form-shell .hs-form-field>label .hs-form-required{color:var(--gold);margin-left:4px;display:inline}
+.form-shell .hs-input:not([type=checkbox]):not([type=radio]){width:100%!important;background:var(--midnight)!important;border:1px solid var(--line)!important;color:var(--white)!important;font-family:var(--body)!important;font-size:.98rem!important;padding:14px 16px!important;border-radius:2px!important;box-shadow:none!important;transition:border-color .35s var(--ease);height:auto!important}
+.form-shell .hs-input:focus{outline:none!important;border-color:var(--gold)!important}
+.form-shell textarea.hs-input{resize:vertical;min-height:96px}
+.form-shell .hs-button,.form-shell input[type=submit]{width:100%!important;background:var(--gold)!important;color:var(--midnight)!important;font-family:var(--display)!important;font-weight:600!important;font-size:1rem!important;letter-spacing:.02em!important;padding:17px!important;border:none!important;border-radius:2px!important;cursor:pointer;transition:background .35s var(--ease);margin-top:8px;text-transform:none}
+.form-shell .hs-button:hover,.form-shell input[type=submit]:hover{background:var(--gold-bright)!important}
+.form-shell .legal-consent-container{font-size:.78rem;color:var(--muted);line-height:1.55;margin:18px 0}
+.form-shell .legal-consent-container p{margin:0 0 8px 0;color:var(--muted)}
+.form-shell .legal-consent-container a{color:var(--platinum);text-decoration:underline}
+.form-shell .hs-form-booleancheckbox-display{display:flex;align-items:flex-start;gap:10px;color:var(--platinum);font-size:.82rem}
+.form-shell .hs-form-booleancheckbox-display span{font-family:var(--body)!important;text-transform:none!important;letter-spacing:0!important;color:var(--platinum)!important;font-size:.82rem!important;margin:0!important}
+.form-shell input[type=checkbox]{accent-color:var(--gold);margin-top:3px;width:auto!important}
+.form-shell .hs-error-msg,.form-shell .hs-error-msgs label{color:#D4892A!important;font-size:.82rem!important;margin-top:6px!important;font-family:var(--mono)!important;text-transform:none!important;letter-spacing:0!important}
+.form-shell .submitted-message{color:var(--platinum);font-size:1.05rem;padding:24px 0;font-family:var(--body)}
+/* Hide HubSpot branding footer */
+.form-shell a[href*="hubspot.com"],.form-shell img[src*="hubspot"],.form-shell .hbspt-form>div:last-child:has(a[href*="hubspot"]){display:none!important}
+
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-index:2}
 .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
@@ -173,6 +201,10 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MZV9Q4G8"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 <div class="grain"></div>
 
 <nav id="nav">
@@ -342,7 +374,7 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
    Once set, the HubSpot form automatically replaces the native one. */
 (function(){
   var PORTAL_ID = "51491481";   // ej: "12345678"
-  var FORM_ID   = "70c85848-a8c6-43c5-a47b-77328e200f4e";   // ej: "a1b2c3d4-...."
+  var FORM_ID   = "f3abb1a6-eb29-4f79-b615-8efb3441e8cd";   // ej: "a1b2c3d4-...."
   if(!PORTAL_ID || !FORM_ID) return; // not set → uses native fallback form
   var s=document.createElement('script');
   s.src="https://js.hsforms.net/forms/embed/v2.js";
