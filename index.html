@@ -560,18 +560,218 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
 });
 
 /* ░░ HUBSPOT FORM EMBED ░░
-   Pega aquí tu Portal ID y Form ID de HubSpot (Marketing → Forms).
-   Cuando estén configurados, el formulario de HubSpot reemplaza al nativo automáticamente. */
+   3-layer defense para aplicar paleta AEVUM sobre HubSpot embed:
+   Layer 1 = CSS estático arriba (head)
+   Layer 2 = CSS injection post-load (pseudo-classes :focus, :hover, ::placeholder)
+   Layer 3 = DOM manipulation con setProperty('important') que reescribe inline styles
+   Razón: HubSpot v2 embed inyecta inline styles directos en los inputs (specificity 1000).
+   Solo se vencen con otra inline declaration !important aplicada via JavaScript. */
+
+function applyAevumHubspotStyles(){
+  var container=document.getElementById('hubspot-form-target');
+  if(!container)return;
+
+  /* LAYER 2 · Inject CSS para pseudo-classes (:focus, :hover, ::placeholder) */
+  if(!document.getElementById('aevum-hs-late')){
+    var styleTag=document.createElement('style');
+    styleTag.id='aevum-hs-late';
+    styleTag.textContent=
+      '#hubspot-form-target .hs-input:focus,'+
+      '#hubspot-form-target input:focus,'+
+      '#hubspot-form-target textarea:focus,'+
+      '#hubspot-form-target select:focus{'+
+      'background:#0C1526!important;background-color:#0C1526!important;'+
+      'border-color:#A89028!important;outline:none!important;'+
+      'color:#F4F6FA!important;-webkit-text-fill-color:#F4F6FA!important;}'+
+      '#hubspot-form-target .hs-button:hover,'+
+      '#hubspot-form-target input.hs-button:hover,'+
+      '#hubspot-form-target input[type="submit"]:hover,'+
+      '#hubspot-form-target button[type="submit"]:hover{'+
+      'background:#C9AE3C!important;background-color:#C9AE3C!important;'+
+      'color:#0C1526!important;}'+
+      '#hubspot-form-target ::placeholder{color:#6B7689!important;opacity:1!important;'+
+      '-webkit-text-fill-color:#6B7689!important;}'+
+      '#hubspot-form-target input:-webkit-autofill,'+
+      '#hubspot-form-target textarea:-webkit-autofill{'+
+      '-webkit-box-shadow:0 0 0 30px #0C1526 inset!important;'+
+      '-webkit-text-fill-color:#F4F6FA!important;'+
+      'caret-color:#F4F6FA!important;background-color:#0C1526!important;}';
+    document.head.appendChild(styleTag);
+  }
+
+  /* LAYER 3 · DOM manipulation — reescribe inline styles con !important inline
+     Esta es la única forma de vencer los inline styles que inyecta HubSpot */
+
+  /* INPUTS, TEXTAREAS, SELECTS */
+  var inputs=container.querySelectorAll('input.hs-input, textarea.hs-input, select.hs-input, .hs-form-field input, .hs-form-field textarea, .hs-form-field select');
+  inputs.forEach(function(el){
+    if(el.type==='checkbox'||el.type==='radio'||el.type==='submit'||el.type==='button')return;
+    el.style.setProperty('background','#0C1526','important');
+    el.style.setProperty('background-color','#0C1526','important');
+    el.style.setProperty('background-image','none','important');
+    el.style.setProperty('color','#F4F6FA','important');
+    el.style.setProperty('-webkit-text-fill-color','#F4F6FA','important');
+    el.style.setProperty('border','1px solid rgba(192,202,220,0.10)','important');
+    el.style.setProperty('border-radius','2px','important');
+    el.style.setProperty('padding','14px 16px','important');
+    el.style.setProperty('font-family',"'IBM Plex Sans', sans-serif",'important');
+    el.style.setProperty('font-size','0.98rem','important');
+    el.style.setProperty('font-weight','300','important');
+    el.style.setProperty('width','100%','important');
+    el.style.setProperty('box-sizing','border-box','important');
+    el.style.setProperty('box-shadow','none','important');
+    el.style.setProperty('outline','none','important');
+    if(el.tagName==='TEXTAREA'){
+      el.style.setProperty('min-height','96px','important');
+      el.style.setProperty('resize','vertical','important');
+    }
+  });
+
+  /* SUBMIT BUTTON */
+  var buttons=container.querySelectorAll('input.hs-button, button.hs-button, input[type="submit"], button[type="submit"]');
+  buttons.forEach(function(el){
+    el.style.setProperty('background','#A89028','important');
+    el.style.setProperty('background-color','#A89028','important');
+    el.style.setProperty('background-image','none','important');
+    el.style.setProperty('color','#0C1526','important');
+    el.style.setProperty('-webkit-text-fill-color','#0C1526','important');
+    el.style.setProperty('font-family',"'DM Sans', sans-serif",'important');
+    el.style.setProperty('font-weight','600','important');
+    el.style.setProperty('font-size','1rem','important');
+    el.style.setProperty('letter-spacing','0.02em','important');
+    el.style.setProperty('text-transform','none','important');
+    el.style.setProperty('padding','17px','important');
+    el.style.setProperty('border','none','important');
+    el.style.setProperty('border-radius','2px','important');
+    el.style.setProperty('width','100%','important');
+    el.style.setProperty('cursor','pointer','important');
+    el.style.setProperty('box-shadow','none','important');
+    el.style.setProperty('text-shadow','none','important');
+    el.style.setProperty('margin-top','12px','important');
+    el.style.setProperty('transition','background 0.35s ease','important');
+  });
+
+  /* LABELS */
+  var labels=container.querySelectorAll('.hs-form-field>label, .hs-form-field label:first-child');
+  labels.forEach(function(el){
+    if(el.classList.contains('hs-error-msg'))return;
+    if(el.classList.contains('hs-form-booleancheckbox-display'))return;
+    el.style.setProperty('color','#C0CADC','important');
+    el.style.setProperty('font-family',"'IBM Plex Mono', monospace",'important');
+    el.style.setProperty('font-size','11px','important');
+    el.style.setProperty('letter-spacing','0.16em','important');
+    el.style.setProperty('text-transform','uppercase','important');
+    el.style.setProperty('font-weight','400','important');
+    el.style.setProperty('margin-bottom','9px','important');
+    el.style.setProperty('display','block','important');
+  });
+
+  /* REQUIRED ASTERISK */
+  var asterisks=container.querySelectorAll('.hs-form-required');
+  asterisks.forEach(function(el){
+    el.style.setProperty('color','#E08585','important');
+    el.style.setProperty('margin-left','3px','important');
+  });
+
+  /* LEGAL CONSENT TEXT */
+  var consent=container.querySelectorAll('.legal-consent-container, .legal-consent-container p, .legal-consent-container div, .legal-consent-container span');
+  consent.forEach(function(el){
+    if(el.tagName==='INPUT')return;
+    el.style.setProperty('color','#C0CADC','important');
+    el.style.setProperty('font-family',"'IBM Plex Sans', sans-serif",'important');
+    el.style.setProperty('font-size','0.85rem','important');
+    el.style.setProperty('font-weight','300','important');
+    el.style.setProperty('text-transform','none','important');
+    el.style.setProperty('letter-spacing','0','important');
+    el.style.setProperty('line-height','1.55','important');
+  });
+
+  /* CONSENT LINKS */
+  var consentLinks=container.querySelectorAll('.legal-consent-container a');
+  consentLinks.forEach(function(el){
+    el.style.setProperty('color','#C9AE3C','important');
+    el.style.setProperty('text-decoration','underline','important');
+  });
+
+  /* CHECKBOX label display */
+  var checkboxLabels=container.querySelectorAll('.hs-form-booleancheckbox-display, .hs-form-booleancheckbox label');
+  checkboxLabels.forEach(function(el){
+    el.style.setProperty('color','#C0CADC','important');
+    el.style.setProperty('font-family',"'IBM Plex Sans', sans-serif",'important');
+    el.style.setProperty('font-size','0.85rem','important');
+    el.style.setProperty('font-weight','300','important');
+    el.style.setProperty('text-transform','none','important');
+    el.style.setProperty('letter-spacing','0','important');
+    el.style.setProperty('line-height','1.55','important');
+    el.style.setProperty('display','flex','important');
+    el.style.setProperty('align-items','flex-start','important');
+    el.style.setProperty('gap','8px','important');
+    el.style.setProperty('cursor','pointer','important');
+  });
+
+  /* CHECKBOX inputs */
+  var checkboxes=container.querySelectorAll('input[type="checkbox"]');
+  checkboxes.forEach(function(el){
+    el.style.setProperty('width','14px','important');
+    el.style.setProperty('height','14px','important');
+    el.style.setProperty('margin-right','8px','important');
+    el.style.setProperty('margin-top','3px','important');
+    el.style.setProperty('accent-color','#A89028','important');
+    el.style.setProperty('vertical-align','middle','important');
+    el.style.setProperty('flex-shrink','0','important');
+  });
+
+  /* ERROR MESSAGES */
+  var errors=container.querySelectorAll('.hs-error-msg, .hs-error-msgs label');
+  errors.forEach(function(el){
+    el.style.setProperty('color','#E08585','important');
+    el.style.setProperty('text-transform','none','important');
+    el.style.setProperty('letter-spacing','0','important');
+    el.style.setProperty('font-size','0.82rem','important');
+    el.style.setProperty('font-family',"'IBM Plex Sans', sans-serif",'important');
+  });
+
+  /* FORM FIELD SPACING */
+  var formFields=container.querySelectorAll('.hs-form-field');
+  formFields.forEach(function(el){
+    el.style.setProperty('margin-bottom','22px','important');
+  });
+}
+
 (function(){
-  var PORTAL_ID = "51491481";
-  var FORM_ID   = "70c85848-a8c6-43c5-a47b-77328e200f4e";
-  if(!PORTAL_ID || !FORM_ID) return; // sin configurar → usa formulario nativo de respaldo
+  var PORTAL_ID="51491481";
+  var FORM_ID="70c85848-a8c6-43c5-a47b-77328e200f4e";
+  if(!PORTAL_ID||!FORM_ID)return;
   var s=document.createElement('script');
   s.src="https://js.hsforms.net/forms/embed/v2.js";
   s.onload=function(){
     window.hbspt.forms.create({
-      portalId:PORTAL_ID, formId:FORM_ID, region:"na1",
-      target:"#hubspot-form-target"
+      portalId:PORTAL_ID,
+      formId:FORM_ID,
+      region:"na1",
+      target:"#hubspot-form-target",
+      onFormReady:function($form){
+        /* Aplica styles inmediatamente */
+        applyAevumHubspotStyles();
+        /* Re-aplica con delays por si HubSpot tiene operaciones async */
+        setTimeout(applyAevumHubspotStyles,100);
+        setTimeout(applyAevumHubspotStyles,500);
+        setTimeout(applyAevumHubspotStyles,1500);
+
+        /* MutationObserver para re-aplicar si HubSpot agrega nodos (error messages, validation, etc.) */
+        var container=document.getElementById('hubspot-form-target');
+        if(container&&window.MutationObserver){
+          var observer=new MutationObserver(function(mutations){
+            var hasNewNodes=mutations.some(function(m){return m.addedNodes.length>0});
+            if(hasNewNodes)applyAevumHubspotStyles();
+          });
+          observer.observe(container,{childList:true,subtree:true});
+        }
+      },
+      onFormSubmit:function($form){
+        /* Re-aplica antes de submit por si HubSpot cambió algo */
+        applyAevumHubspotStyles();
+      }
     });
   };
   document.head.appendChild(s);
