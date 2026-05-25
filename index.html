@@ -437,18 +437,24 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
     window.hbspt.forms.create({
       portalId:PORTAL_ID, formId:FORM_ID, region:"na1",
       target:"#hubspot-form-target",
-      onFormReady: function($form){
-        var langInput = $form.find('input[name="idioma_sitio"]');
-        if(langInput.length) langInput.val(languageCode);
-        var campaignInput = $form.find('input[name="campaign_source"]');
-        if(campaignInput.length) campaignInput.val(campaignSource);
-        if(utm_source) $form.find('input[name="utm_source"]').val(utm_source);
-        if(utm_medium) $form.find('input[name="utm_medium"]').val(utm_medium);
-        if(utm_campaign) $form.find('input[name="utm_campaign"]').val(utm_campaign);
-        if(utm_content) $form.find('input[name="utm_content"]').val(utm_content);
-      },
-      pageUri: window.location.href,
-      pageName: document.title
+      onFormReady: function(formEl){
+        // formEl es un DOM element nativo · usamos querySelector estándar
+        // Handle both jQuery object (old API) and DOM element (new API) for safety
+        var form = (formEl && formEl.jquery) ? formEl[0] : formEl;
+        if(!form || !form.querySelector) return;
+
+        function setHidden(name, value){
+          var input = form.querySelector('input[name="'+name+'"]');
+          if(input && value) input.value = value;
+        }
+
+        setHidden('idioma_sitio', languageCode);
+        setHidden('campaign_source', campaignSource);
+        if(utm_source) setHidden('utm_source', utm_source);
+        if(utm_medium) setHidden('utm_medium', utm_medium);
+        if(utm_campaign) setHidden('utm_campaign', utm_campaign);
+        if(utm_content) setHidden('utm_content', utm_content);
+      }
     });
   };
   document.head.appendChild(s);
