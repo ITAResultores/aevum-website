@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AEVUM · The Revenue Operating System for the Spanish-speaking world</title>
+<meta name="description" content="AEVUM is the first Revenue Operating System for the Spanish-speaking world. Unified cross-channel revenue attribution, eval-governed, with data sovereignty. AI-Orchestrated Growth. Human-Governed. Eval-Proven.">
+<link rel="canonical" href="https://aevumai.co/en/">
+<link rel="alternate" hreflang="es" href="https://aevumai.co/">
+<link rel="alternate" hreflang="en" href="https://aevumai.co/en/">
+<link rel="alternate" hreflang="x-default" href="https://aevumai.co/">
+<meta property="og:title" content="AEVUM · Revenue Operating System">
+<meta property="og:description" content="AI-Orchestrated Growth. Human-Governed. Eval-Proven.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --midnight:#0C1526; --midnight-warm:#0E1729; --blue:#162E58;
+  --gold:#A89028; --gold-bright:#C9AE3C; --platinum:#C0CADC;
+  --white:#F4F6FA; --muted:#6B7689; --line:rgba(192,202,220,.10);
+  --display:'DM Sans',sans-serif; --body:'IBM Plex Sans',sans-serif; --mono:'IBM Plex Mono',monospace;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--midnight); color:var(--platinum);
+  font-family:var(--body); font-weight:300; line-height:1.7;
+  -webkit-font-smoothing:antialiased; overflow-x:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:radial-gradient(ellipse 80% 60% at 50% -10%, rgba(22,46,88,.45), transparent 70%);
+}
+.grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E");}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px;position:relative;z-index:2}
+section{position:relative;z-index:2}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:26px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .5s var(--ease),padding .5s var(--ease);
+  backdrop-filter:blur(0px);}
+nav.scrolled{background:rgba(12,21,38,.82);backdrop-filter:blur(14px);padding:18px 40px;border-bottom:1px solid var(--line)}
+.logo{display:flex;align-items:center;gap:13px;text-decoration:none}
+.logo svg{width:30px;height:30px;display:block}
+.logo .wm{font-family:var(--display);font-weight:600;font-size:20px;letter-spacing:.22em;color:var(--white)}
+.nav-cta{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--platinum);text-decoration:none;border:1px solid var(--line);padding:11px 22px;border-radius:2px;
+  transition:all .4s var(--ease)}
+.nav-cta:hover{border-color:var(--gold);color:var(--gold-bright)}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:140px 0 100px}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.34em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:36px;opacity:0}
+.hero h1{font-family:var(--display);font-weight:500;font-size:clamp(2.6rem,6.4vw,5.4rem);
+  line-height:1.04;letter-spacing:-.02em;color:var(--white);max-width:16ch}
+.hero h1 .g{color:var(--gold);font-weight:400}
+.hero h1>span{display:block;opacity:0}
+.hero .sub{margin-top:38px;font-size:clamp(1rem,1.5vw,1.28rem);font-weight:300;
+  color:var(--platinum);max-width:54ch;opacity:0}
+.hero .sub b{color:var(--white);font-weight:500}
+.hero-meta{margin-top:64px;display:flex;gap:48px;flex-wrap:wrap;opacity:0}
+.hero-meta div{font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--muted);
+  text-transform:uppercase;border-left:1px solid var(--gold);padding-left:16px}
+.hero-meta div b{display:block;color:var(--white);font-size:13px;margin-bottom:3px;letter-spacing:.1em}
+.pulse{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold-bright);
+  margin-right:9px;box-shadow:0 0 0 0 rgba(201,174,60,.6);animation:pulse 2.6s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(201,174,60,.5)}70%{box-shadow:0 0 0 9px rgba(201,174,60,0)}100%{box-shadow:0 0 0 0 rgba(201,174,60,0)}}
+
+/* SECTION SHELL */
+.sec{padding:140px 0;border-top:1px solid var(--line)}
+.sec-label{font-family:var(--mono);font-size:12px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:34px}
+.sec h2{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4.2vw,3.4rem);
+  line-height:1.12;letter-spacing:-.015em;color:var(--white);max-width:18ch}
+.sec h2 .g{color:var(--gold)}
+.sec .lead{margin-top:30px;font-size:clamp(1rem,1.4vw,1.18rem);max-width:60ch;color:var(--platinum)}
+.sec .lead b{color:var(--white);font-weight:500}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 1.1s var(--ease),transform 1.1s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* PROBLEM big statement */
+.statement{font-family:var(--display);font-weight:400;font-size:clamp(1.7rem,3.6vw,2.9rem);
+  line-height:1.28;letter-spacing:-.01em;color:var(--platinum);max-width:22ch}
+.statement .w{color:var(--white)}
+.statement .g{color:var(--gold)}
+
+/* GRID cards */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:72px;
+  background:var(--line);border:1px solid var(--line)}
+.card{background:var(--midnight);padding:46px 38px;transition:background .5s var(--ease)}
+.card:hover{background:var(--midnight-warm)}
+.card .n{font-family:var(--mono);font-size:12px;color:var(--gold);letter-spacing:.2em;margin-bottom:24px}
+.card h3{font-family:var(--display);font-weight:600;font-size:1.32rem;color:var(--white);margin-bottom:14px}
+.card .price{font-family:var(--mono);font-size:13px;color:var(--gold-bright);margin-bottom:18px;letter-spacing:.04em}
+.card p{font-size:.96rem;color:var(--platinum);font-weight:300}
+
+/* SYSTEM steps */
+.steps{margin-top:64px;display:flex;flex-direction:column}
+.step{display:grid;grid-template-columns:90px 1fr;gap:40px;padding:38px 0;border-bottom:1px solid var(--line);align-items:start}
+.step:last-child{border-bottom:none}
+.step .si{font-family:var(--display);font-weight:600;font-size:2.2rem;color:var(--gold);opacity:.55}
+.step h4{font-family:var(--display);font-weight:600;font-size:1.22rem;color:var(--white);margin-bottom:9px}
+.step p{font-size:.98rem;color:var(--platinum);font-weight:300;max-width:62ch}
+
+/* WHY NOW datapoints */
+.data{display:grid;grid-template-columns:repeat(3,1fr);gap:54px;margin-top:76px}
+.data .dp .num{font-family:var(--display);font-weight:600;font-size:clamp(2.4rem,5vw,3.6rem);
+  color:var(--white);line-height:1;letter-spacing:-.02em}
+.data .dp .num i{color:var(--gold);font-style:normal}
+.data .dp .lbl{margin-top:16px;font-size:.92rem;color:var(--platinum);font-weight:300;border-top:1px solid var(--gold);padding-top:14px}
+
+/* LEGACY */
+.legacy{text-align:center;padding:170px 0}
+.legacy .mark{display:flex;justify-content:center;margin-bottom:54px}
+.legacy .mark svg{width:54px;height:54px}
+.legacy h2{margin:0 auto;max-width:20ch;font-size:clamp(2rem,4.6vw,3.5rem)}
+.legacy p{margin:34px auto 0;max-width:48ch;color:var(--platinum);font-size:1.1rem}
+.infinity{font-family:var(--display);font-size:3rem;color:var(--gold);margin-top:48px;opacity:.6}
+
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:90px;margin-top:72px;align-items:start}
+.contact-left h2{max-width:14ch}
+.contact-left .lead{margin-top:26px}
+.contact-points{margin-top:46px;list-style:none}
+.contact-points li{font-family:var(--mono);font-size:13px;letter-spacing:.06em;color:var(--platinum);
+  padding:15px 0;border-bottom:1px solid var(--line);display:flex;gap:14px;align-items:center}
+.contact-points li::before{content:"";width:5px;height:5px;background:var(--gold);border-radius:50%;flex-shrink:0}
+.form-shell{background:var(--midnight-warm);border:1px solid var(--line);padding:48px 44px;border-radius:3px}
+.form-shell h3{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--white);margin-bottom:8px}
+.form-shell .fnote{font-size:.86rem;color:var(--muted);margin-bottom:30px}
+/* Native fallback form (replace with HubSpot embed — see instructions) */
+.field{margin-bottom:22px}
+.field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.field input,.field textarea{width:100%;background:var(--midnight);border:1px solid var(--line);
+  color:var(--white);font-family:var(--body);font-size:.98rem;padding:14px 16px;border-radius:2px;
+  transition:border-color .35s var(--ease)}
+.field input:focus,.field textarea:focus{outline:none;border-color:var(--gold)}
+.field textarea{resize:vertical;min-height:96px}
+.submit{width:100%;background:var(--gold);color:var(--midnight);font-family:var(--display);
+  font-weight:600;font-size:1rem;letter-spacing:.02em;padding:17px;border:none;border-radius:2px;
+  cursor:pointer;transition:background .35s var(--ease)}
+.submit:hover{background:var(--gold-bright)}
+#hubspot-form-target:empty+.native-form{display:block}
+#hubspot-form-target:not(:empty)+.native-form{display:none}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-index:2}
+.foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
+.foot .logo .wm{font-size:17px}
+.foot .meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--muted);text-transform:uppercase}
+.foot .tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+
+@media(max-width:880px){
+  .wrap{padding:0 24px} nav{padding:20px 24px} nav.scrolled{padding:16px 24px}
+  .grid,.data{grid-template-columns:1fr}
+  .contact-grid{grid-template-columns:1fr;gap:50px}
+  .step{grid-template-columns:60px 1fr;gap:22px}
+  .hero-meta{gap:28px}
+  .nav-cta{display:none}
+}
+</style>
+</head>
+<body>
+<div class="grain"></div>
+
+<nav id="nav">
+  <a href="#top" class="logo" aria-label="AEVUM">
+    <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+      <path d="M6 35 L20 6 L34 35" stroke="#A89028" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M13 23 L27 23" stroke="#C0CADC" stroke-width="2.4" stroke-linecap="round"/>
+    </svg>
+    <span class="wm">AEVUM</span>
+  </a>
+  <a href="#contacto" class="nav-cta">Talk to AEVUM</a>
+</nav>
+
+<div id="top"></div>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow" data-anim>Agentic Growth Orchestration</div>
+    <h1>
+      <span data-anim>The <span class="g">Revenue Operating System</span></span>
+      <span data-anim>for the Spanish-speaking world.</span>
+    </h1>
+    <p class="sub" data-anim>Not an agency. Not a consultancy. It is the infrastructure that runs a company’s marketing revenue — <b>measurable, real-time, governed by senior experts</b>.</p>
+    <div class="hero-meta" data-anim>
+      <div><b>AI-Orchestrated</b>Growth</div>
+      <div><b>Human-Governed</b>Senior judgment</div>
+      <div><b>Eval-Proven</b>Revenue, not theater</div>
+    </div>
+  </div>
+</header>
+
+<section class="sec" id="problema">
+  <div class="wrap">
+    <div class="sec-label reveal">The problem</div>
+    <p class="statement reveal">Companies live in <span class="g">Dashboard Theater</span>: more reports than ever, <span class="w">less revenue clarity than ever</span>. They pay agencies by the hour in a world where AI executes in seconds.</p>
+    <p class="lead reveal">The real buyer is not the CMO — it is the <b>CFO</b>. The question no one answers with certainty: <b>how much revenue did every marketing dollar generate, this week?</b></p>
+  </div>
+</section>
+
+<section class="sec" id="solucion">
+  <div class="wrap">
+    <div class="sec-label reveal">The system</div>
+    <h2 class="reveal">We operate your marketing as a <span class="g">revenue function</span> — the way a CFO operates finance.</h2>
+    <p class="lead reveal">AI agents that execute 24/7, governed by senior experts, on a proprietary methodology: <b>The AUGUR System™</b>. Every decision scored against its revenue impact before it executes.</p>
+    <div class="steps">
+      <div class="step reveal"><div class="si">01</div><div><h4>Context Profile™</h4><p>The client’s revenue DNA: margins, history, brand language. It deepens with every campaign. By month 12 it knows the business better than any replacement could in two years.</p></div></div>
+      <div class="step reveal"><div class="si">02</div><div><h4>Agent Orchestra™</h4><p>Specialized agents — SEO, paid media, content, CRM, analytics — coordinated, operating revenue, not just measuring it.</p></div></div>
+      <div class="step reveal"><div class="si">03</div><div><h4>Eval Engine™</h4><p>Every output scored against revenue impact. Confidence below threshold → review by a human senior. Governance, not a black box.</p></div></div>
+      <div class="step reveal"><div class="si">04</div><div><h4>AUGUR Intelligence™</h4><p>The Bloomberg Terminal of marketing in the AI era. It unifies Meta, Google, Amazon, Walmart, Mercado Libre and TikTok Shop into <b>a single revenue number</b>, every hour. Includes <b>Share of Prompt™</b>: whether your brand exists in the answers AI gives your customers.</p></div></div>
+      <div class="step reveal"><div class="si">05</div><div><h4>Data Embassy™</h4><p>Your data never leaves the country. Auditable, sovereign, with no dependence on foreign APIs. For banking, government and regulated data, sovereignty is <b>architecture from day one</b> — not a later patch.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="productos">
+  <div class="wrap">
+    <div class="sec-label reveal">The portfolio</div>
+    <h2 class="reveal">Three products. One system.</h2>
+    <div class="grid">
+      <div class="card reveal"><div class="n">01 · RECURRING</div><h3>Growth System™</h3><div class="price">Monthly retainer</div><p>Operates marketing with AI 24/7, governed by seniors. Operationally replaces the traditional agency — billing on results, not hours.</p></div>
+      <div class="card reveal"><div class="n">02 · SCALE</div><h3>AUGUR Intelligence™</h3><div class="price">SaaS · starts with the free scan</div><p>Unified revenue attribution and Share of Prompt™. Scales without headcount. The only one in the Spanish-speaking world measuring your visibility inside AI.</p></div>
+      <div class="card reveal"><div class="n">03 · ENTRY</div><h3>Launchpad™</h3><div class="price">Project · 60–90 days</div><p>Diagnosis and implementation with a success KPI signed before we start. The premise is proven by charging, not in a business plan.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="porque">
+  <div class="wrap">
+    <div class="sec-label reveal">Why now</div>
+    <h2 class="reveal">The budget is <span class="g">moving</span>. We are where it lands.</h2>
+    <div class="data">
+      <div class="dp reveal"><div class="num">60<i>%</i></div><div class="lbl">of marketers are cutting agency spend because of AI (Typeface 2026)</div></div>
+      <div class="dp reveal"><div class="num">$2.2<i>B</i></div><div class="lbl">Publicis paid for LiveRamp — data, not models. Even the largest incumbent validates the thesis</div></div>
+      <div class="dp reveal"><div class="num">9<i>%</i></div><div class="lbl">AI error rate with evals, vs 47% without (BCG 2026). Governance is the product</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec legacy" id="legado">
+  <div class="wrap">
+    <div class="mark reveal">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true">
+        <path d="M6 35 L20 6 L34 35" stroke="#A89028" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M13 23 L27 23" stroke="#C0CADC" stroke-width="2.2" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <h2 class="reveal">Not built to sell. <span class="g">Built to inherit.</span></h2>
+    <p class="reveal">AEVUM is a multigenerational institution — designed to endure, not for an exit. Latin: <i>aevum</i>, eternal time.</p>
+    <div class="infinity reveal">∞</div>
+  </div>
+</section>
+
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-left">
+        <div class="sec-label reveal">The next step</div>
+        <h2 class="reveal">Let us talk about your <span class="g">revenue</span>.</h2>
+        <p class="lead reveal">It is not a pitch. It is a diagnosis. We tell you straight if there is an angle where AEVUM adds value — and if there is not, that too.</p>
+        <ul class="contact-points reveal">
+          <li>30-minute discovery, no commitment</li>
+          <li>Diagnosis with a defined success KPI</li>
+          <li>A direct answer, not a diplomatic one</li>
+        </ul>
+      </div>
+      <div class="form-shell reveal">
+        <h3>Start a conversation</h3>
+        <p class="fnote">We respond within 24 business hours.</p>
+        <!-- ░░ HUBSPOT FORM ░░  El script de abajo inyecta el formulario de HubSpot aquí.
+             Mientras no esté configurado, se muestra el formulario nativo de respaldo. -->
+        <div id="hubspot-form-target"></div>
+        <form class="native-form" action="https://formspree.io/f/REEMPLAZAR" method="POST" onsubmit="return false;">
+          <div class="field"><label>Name</label><input type="text" name="nombre" required></div>
+          <div class="field"><label>Company</label><input type="text" name="empresa" required></div>
+          <div class="field"><label>Work email</label><input type="email" name="email" required></div>
+          <div class="field"><label>What would you like to solve?</label><textarea name="mensaje"></textarea></div>
+          <button type="submit" class="submit">Request a conversation</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#top" class="logo" aria-label="AEVUM">
+      <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" width="26" height="26">
+        <path d="M6 35 L20 6 L34 35" stroke="#A89028" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M13 23 L27 23" stroke="#C0CADC" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+      <span class="wm">AEVUM</span>
+    </a>
+    <div class="tag">AI-Orchestrated · Human-Governed · Eval-Proven</div>
+    <div class="meta">© 2026 AEVUM · Mexico City</div>
+  </div>
+</footer>
+
+<script>
+/* Nav scroll state */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
+
+/* Hero staggered load */
+addEventListener('load',()=>{
+  document.querySelectorAll('[data-anim]').forEach((el,i)=>{
+    el.style.transition='opacity 1.2s var(--ease), transform 1.2s var(--ease)';
+    el.style.transform='translateY(26px)';
+    setTimeout(()=>{el.style.opacity='1';el.style.transform='none'},180+i*150);
+  });
+});
+
+/* Scroll reveal */
+const io=new IntersectionObserver((es)=>{
+  es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.16,rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{
+  el.style.transitionDelay=(i%3)*90+'ms';
+  io.observe(el);
+});
+
+/* ░░ HUBSPOT FORM EMBED ░░
+   Pega aquí tu Portal ID y Form ID de HubSpot (Marketing → Forms).
+   Cuando estén configurados, el formulario de HubSpot reemplaza al nativo automáticamente. */
+(function(){
+  var PORTAL_ID = "51491481";
+  var FORM_ID   = "f3abb1a6-eb29-4f79-b615-8efb3441e8cd";
+  if(!PORTAL_ID || !FORM_ID) return; // sin configurar → usa formulario nativo de respaldo
+  var s=document.createElement('script');
+  s.src="https://js.hsforms.net/forms/embed/v2.js";
+  s.onload=function(){
+    window.hbspt.forms.create({
+      portalId:PORTAL_ID, formId:FORM_ID, region:"na1",
+      target:"#hubspot-form-target"
+    });
+  };
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
