@@ -22,6 +22,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=IBM+Plex+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <style>
 :root{
   --midnight:#0C1526; --midnight-warm:#0E1729; --blue:#162E58;
@@ -141,7 +144,7 @@ nav.scrolled{background:rgba(12,21,38,.82);backdrop-filter:blur(14px);padding:18
 .form-shell{background:var(--midnight-warm);border:1px solid var(--line);padding:48px 44px;border-radius:3px}
 .form-shell h3{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--white);margin-bottom:8px}
 .form-shell .fnote{font-size:.86rem;color:#B0BCCE;margin-bottom:30px}
-/* Native fallback form (replace with HubSpot embed — see instructions) */
+/* Form fields (base) */
 .field{margin-bottom:22px}
 .field label{display:block;font-family:var(--mono);font-size:11px;letter-spacing:.16em;
   text-transform:uppercase;color:#C8D3E3;font-weight:500;margin-bottom:9px}
@@ -154,83 +157,6 @@ nav.scrolled{background:rgba(12,21,38,.82);backdrop-filter:blur(14px);padding:18
   font-weight:600;font-size:1rem;letter-spacing:.02em;padding:17px;border:none;border-radius:2px;
   cursor:pointer;transition:background .35s var(--ease)}
 .submit:hover{background:var(--gold-bright)}
-#hubspot-form-target:empty+.native-form{display:block}
-#hubspot-form-target:not(:empty)+.native-form{display:none}
-
-/* HUBSPOT FORM STYLING · brand AEVUM override (v2.0) */
-#hubspot-form-target .hbspt-form,
-#hubspot-form-target .hs-form { font-family:var(--body) !important; }
-#hubspot-form-target .hs-form-field > label,
-#hubspot-form-target label.hs-form-field {
-  display:block !important; font-family:var(--mono) !important; font-size:11px !important;
-  letter-spacing:.16em !important; text-transform:uppercase !important;
-  color:#C8D3E3 !important; margin-bottom:9px !important; font-weight:500 !important;
-}
-#hubspot-form-target .hs-input,
-#hubspot-form-target input[type="text"],
-#hubspot-form-target input[type="email"],
-#hubspot-form-target input[type="tel"],
-#hubspot-form-target input[type="number"],
-#hubspot-form-target textarea,
-#hubspot-form-target select {
-  width:100% !important; background:var(--midnight) !important; border:1px solid var(--line-strong) !important;
-  color:var(--white) !important; font-family:var(--body) !important; font-size:.98rem !important;
-  font-weight:300 !important; padding:14px 16px !important; border-radius:2px !important;
-  transition:border-color .35s var(--ease) !important; box-sizing:border-box !important; line-height:1.5 !important;
-}
-#hubspot-form-target .hs-input:focus,
-#hubspot-form-target input:focus,
-#hubspot-form-target textarea:focus,
-#hubspot-form-target select:focus {
-  outline:none !important; border-color:var(--gold) !important;
-  box-shadow:0 0 0 1px var(--gold) !important;
-}
-#hubspot-form-target .hs-input::placeholder,
-#hubspot-form-target input::placeholder,
-#hubspot-form-target textarea::placeholder {
-  color:var(--muted) !important; opacity:.6 !important;
-}
-#hubspot-form-target .hs-form-field { margin-bottom:22px !important; }
-#hubspot-form-target textarea { resize:vertical !important; min-height:96px !important; }
-#hubspot-form-target .hs-button,
-#hubspot-form-target input[type="submit"],
-#hubspot-form-target button[type="submit"] {
-  width:100% !important; background:var(--gold) !important; color:var(--midnight) !important;
-  font-family:var(--display) !important; font-weight:600 !important; font-size:1rem !important;
-  letter-spacing:.02em !important; padding:17px !important; border:none !important;
-  border-radius:2px !important; cursor:pointer !important;
-  transition:background .35s var(--ease) !important; text-transform:none !important; margin-top:8px !important;
-}
-#hubspot-form-target .hs-button:hover,
-#hubspot-form-target input[type="submit"]:hover,
-#hubspot-form-target button[type="submit"]:hover { background:var(--gold-bright) !important; }
-#hubspot-form-target .hs-error-msg,
-#hubspot-form-target .hs-error-msgs label {
-  color:#E25C5C !important; font-size:12px !important; font-family:var(--mono) !important; margin-top:6px !important;
-}
-#hubspot-form-target .submitted-message {
-  color:var(--platinum) !important; font-family:var(--body) !important; font-size:1rem !important; padding:24px 0 !important;
-}
-#hubspot-form-target .hs-form-required { color:var(--gold) !important; }
-#hubspot-form-target select {
-  appearance:none; -webkit-appearance:none;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%23A89028' stroke-width='1.5' fill='none'/></svg>") !important;
-  background-repeat:no-repeat !important; background-position:right 16px center !important;
-  background-size:12px !important; padding-right:40px !important;
-}
-#hubspot-form-target input[type="checkbox"],
-#hubspot-form-target input[type="radio"] {
-  width:auto !important; margin-right:8px !important; accent-color:var(--gold) !important;
-}
-#hubspot-form-target .legal-consent-container,
-#hubspot-form-target .hs-richtext {
-  color:var(--muted) !important; font-size:.82rem !important; line-height:1.5 !important; margin:16px 0 !important;
-}
-#hubspot-form-target .legal-consent-container a,
-#hubspot-form-target .hs-richtext a {
-  color:var(--gold) !important; text-decoration:underline !important;
-}
-
 /* FOOTER */
 footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-index:2}
 .foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:24px}
@@ -246,6 +172,57 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-
   .hero-meta{gap:28px}
   .nav-cta{display:none}
 }
+
+/* ============ v2 · CENTERED LAYOUT + PILLARS + CUSTOM FORM ============ */
+/* Centrado consistente en todo el sitio */
+.hero{align-items:center;text-align:center}
+.hero h1{margin-left:auto;margin-right:auto}
+.hero .sub{margin-left:auto;margin-right:auto}
+.sec{text-align:center}
+.sec h2{margin-left:auto;margin-right:auto}
+.sec .lead{margin-left:auto;margin-right:auto}
+.statement{margin-left:auto;margin-right:auto}
+.data{max-width:980px;margin-left:auto;margin-right:auto}
+.data .dp{text-align:center}
+/* Contacto → una sola columna centrada; el form queda alineado a la izquierda por usabilidad */
+.contact-grid{grid-template-columns:1fr;gap:54px;max-width:600px;margin-left:auto;margin-right:auto}
+.contact-left{text-align:center}
+.contact-left h2{max-width:none;margin-left:auto;margin-right:auto}
+.contact-points{display:inline-block;text-align:left;margin-top:36px}
+.form-shell{text-align:left}
+/* Pillars band — más grande y con presencia */
+.hero-meta{margin-top:74px;display:flex;flex-wrap:wrap;gap:0;justify-content:center;width:100%;
+  border:1px solid var(--line);border-radius:6px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(22,46,88,.20),rgba(14,23,41,.42))}
+.hero-meta div{flex:1 1 220px;padding:30px 34px;text-align:left;border-left:2px solid var(--gold);
+  font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--platinum);text-transform:uppercase}
+.hero-meta div b{display:block;font-family:var(--display);color:var(--white);font-size:22px;line-height:1.1;
+  margin-bottom:8px;letter-spacing:.01em;font-weight:600;text-transform:none}
+@media(max-width:760px){.hero-meta div{flex:1 1 100%;border-top:1px solid var(--line)}
+  .hero-meta div:first-child{border-top:none}}
+/* Custom form (DOM propio → control total, sin iframe) */
+.aevum-form .field{margin-bottom:22px}
+.aevum-form label:not(.consent){display:block;font-family:var(--mono);font-size:12px;letter-spacing:.14em;
+  text-transform:uppercase;color:#C8D3E3;font-weight:500;margin-bottom:10px}
+.aevum-form input,.aevum-form textarea{width:100%;background:var(--midnight);border:1px solid var(--line-strong);
+  color:var(--white);font-family:var(--body);font-size:1rem;padding:14px 16px;border-radius:3px;
+  transition:border-color .3s var(--ease)}
+.aevum-form input::placeholder,.aevum-form textarea::placeholder{color:var(--muted)}
+.aevum-form input:focus,.aevum-form textarea:focus{outline:none;border-color:var(--gold)}
+.aevum-form textarea{resize:vertical;min-height:110px}
+.aevum-form .consent{display:flex;gap:12px;align-items:flex-start;margin:4px 0 16px;cursor:pointer}
+.aevum-form .consent input{width:18px;height:18px;margin-top:2px;accent-color:var(--gold);flex-shrink:0}
+.aevum-form .consent span{font-size:.9rem;color:var(--platinum);line-height:1.5}
+.aevum-form .legal{font-size:.82rem;color:var(--muted);line-height:1.55;margin-bottom:24px}
+.aevum-form .legal a{color:var(--gold);text-decoration:underline;text-underline-offset:2px}
+.aevum-form .submit{width:100%;background:linear-gradient(120deg,var(--gold),var(--gold-bright));
+  color:var(--midnight);font-family:var(--display);font-weight:600;font-size:1rem;letter-spacing:.02em;
+  border:none;padding:16px;border-radius:3px;cursor:pointer;transition:opacity .3s var(--ease)}
+.aevum-form .submit:hover{opacity:.9}
+.aevum-form .submit:disabled{opacity:.5;cursor:default}
+.form-status{margin-top:16px;font-size:.92rem;min-height:1.2em}
+.form-status.ok{color:#3FBF95}
+.form-status.err{color:#D4892A}
 </style>
 </head>
 <body>
@@ -342,21 +319,15 @@ footer{border-top:1px solid var(--line);padding:60px 0 70px;position:relative;z-
       <div class="form-shell reveal">
         <h3>Start a conversation</h3>
         <p class="fnote">We respond within 24 business hours.</p>
-        <!-- ░░ HUBSPOT FORM ░░  The script below injects the HubSpot form here.
-             While unconfigured, the native fallback form is shown. -->
-        <div id="hubspot-form-target"></div>
-        <form class="native-form" action="https://formspree.io/f/REEMPLAZAR" method="POST" onsubmit="return false;">
-          <input type="hidden" name="idioma_sitio" value="en">
-          <input type="hidden" name="campaign_source" value="WebSite">
-          <input type="hidden" name="utm_source" value="">
-          <input type="hidden" name="utm_medium" value="">
-          <input type="hidden" name="utm_campaign" value="">
-          <input type="hidden" name="page_url" value="">
-          <div class="field"><label>Name</label><input type="text" name="nombre" required></div>
-          <div class="field"><label>Company</label><input type="text" name="empresa" required></div>
-          <div class="field"><label>Corporate email</label><input type="email" name="email" required></div>
-          <div class="field"><label>What would you like to solve?</label><textarea name="mensaje"></textarea></div>
-          <button type="submit" class="submit">Request a conversation</button>
+        <form id="aevum-form" class="aevum-form" novalidate>
+          <div class="field"><label for="af-name">Full name</label><input id="af-name" name="firstname" type="text" autocomplete="name"></div>
+          <div class="field"><label for="af-company">Company</label><input id="af-company" name="company" type="text" autocomplete="organization"></div>
+          <div class="field"><label for="af-email">Work email *</label><input id="af-email" name="email" type="email" required autocomplete="email"></div>
+          <div class="field"><label for="af-msg">What would you like to solve?</label><textarea id="af-msg" name="message" rows="4"></textarea></div>
+          <label class="consent"><input type="checkbox" id="af-comm"><span>I agree to receive other communications from AEVUM.</span></label>
+          <p class="legal">To provide a better service, we need your permission to store and process your personal data. See our <a href="/en/privacidad.html">Privacy Policy</a>.</p>
+          <button type="submit" class="submit" id="af-submit">Request a conversation</button>
+          <p class="form-status" id="af-status" role="status" aria-live="polite"></p>
         </form>
       </div>
     </div>
@@ -401,66 +372,59 @@ document.querySelectorAll('.reveal').forEach((el,i)=>{
   io.observe(el);
 });
 
-/* HUBSPOT FORM EMBED v2.0 · con hidden fields (idioma + campaign source + UTM)
-   Configura PORTAL_ID y FORM_ID con tus IDs de HubSpot.
-   Los hidden fields deben existir en HubSpot Form (ver instrucciones del Paso a Paso). */
+</script>
+
+<script>
+/* AEVUM · form propio → HubSpot Submissions API (DOM propio, control total de estilo) */
 (function(){
-  var PORTAL_ID = "51491481";  // AEVUM portal ID
-  var FORM_ID_ES = "70c85848-a8c6-43c5-a47b-77328e200f4e";
-  var FORM_ID_EN = "f3abb1a6-eb29-4f79-b615-8efb3441e8cd";
-
-  var languageCode = document.documentElement.lang || 'es';
-  var FORM_ID = (languageCode === 'en') ? FORM_ID_EN : FORM_ID_ES;
-  var campaignSource = 'WebSite';
-
-  var urlParams = new URLSearchParams(window.location.search);
-  var utm_source = urlParams.get('utm_source') || '';
-  var utm_medium = urlParams.get('utm_medium') || '';
-  var utm_campaign = urlParams.get('utm_campaign') || '';
-  var utm_content = urlParams.get('utm_content') || '';
-
-  if(!PORTAL_ID || !FORM_ID) return;
-  var s=document.createElement('script');
-  s.src="https://js.hsforms.net/forms/embed/v2.js";
-  s.onload=function(){
-    window.hbspt.forms.create({
-      portalId:PORTAL_ID, formId:FORM_ID, region:"na1",
-      target:"#hubspot-form-target",
-      onFormReady: function(formEl){
-        // formEl es un DOM element nativo · usamos querySelector estándar
-        // Handle both jQuery object (old API) and DOM element (new API) for safety
-        var form = (formEl && formEl.jquery) ? formEl[0] : formEl;
-        if(!form || !form.querySelector) return;
-
-        function setHidden(name, value){
-          var input = form.querySelector('input[name="'+name+'"]');
-          if(input && value) input.value = value;
-        }
-
-        setHidden('idioma_sitio', languageCode);
-        setHidden('campaign_source', campaignSource);
-        if(utm_source) setHidden('utm_source', utm_source);
-        if(utm_medium) setHidden('utm_medium', utm_medium);
-        if(utm_campaign) setHidden('utm_campaign', utm_campaign);
-        if(utm_content) setHidden('utm_content', utm_content);
-      }
-    });
+  var PORTAL="51491481";
+  var FORM_ID_ES="70c85848-a8c6-43c5-a47b-77328e200f4e";
+  var FORM_ID_EN="f3abb1a6-eb29-4f79-b615-8efb3441e8cd";
+  var LANG=(document.documentElement.lang==='en')?'en':'es';
+  var FORM_ID=(LANG==='en')?FORM_ID_EN:FORM_ID_ES;
+  var T=(LANG==='en')?{
+    sending:'Sending\u2026', need:'Please enter your work email.',
+    ok:'Thank you. We\'ll be in touch within 24 business hours.',
+    err:'We couldn\'t send your message. Please try again in a moment.',
+    consent:'I agree to receive other communications from AEVUM.',
+    process:'To provide a better service, we need your permission to store and process your personal data.'
+  }:{
+    sending:'Enviando\u2026', need:'Ingresa tu correo corporativo.',
+    ok:'Gracias. Te contactamos en menos de 24 horas h\u00e1biles.',
+    err:'No pudimos enviar tu mensaje. Intenta de nuevo en un momento.',
+    consent:'Acepto recibir otras comunicaciones de AEVUM.',
+    process:'Para prestarte un mejor servicio, necesitamos tu permiso para almacenar y procesar tus datos personales.'
   };
-  document.head.appendChild(s);
-})();
-
-/* Native form (fallback) · auto-fill tracking fields */
-(function(){
-  var nativeForm = document.querySelector('.native-form');
-  if(!nativeForm) return;
-  var langField = nativeForm.querySelector('input[name="idioma_sitio"]');
-  if(langField) langField.value = document.documentElement.lang || 'es';
-  var pageField = nativeForm.querySelector('input[name="page_url"]');
-  if(pageField) pageField.value = window.location.href;
-  var urlParams = new URLSearchParams(window.location.search);
-  ['utm_source','utm_medium','utm_campaign'].forEach(function(param){
-    var field = nativeForm.querySelector('input[name="'+param+'"]');
-    if(field) field.value = urlParams.get(param) || '';
+  var form=document.getElementById('aevum-form'); if(!form) return;
+  var statusEl=document.getElementById('af-status'), btn=document.getElementById('af-submit');
+  function ck(n){var m=document.cookie.match('(^|;)\\s*'+n+'\\s*=\\s*([^;]+)');return m?m.pop():'';}
+  function setStatus(msg,kind){statusEl.textContent=msg;statusEl.className='form-status'+(kind?' '+kind:'');}
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var email=(form.email.value||'').trim();
+    if(!email){setStatus(T.need,'err');form.email.focus();return;}
+    btn.disabled=true;setStatus(T.sending,'');
+    var fields=[
+      {name:'firstname',value:(form.firstname.value||'').trim()},
+      {name:'company',value:(form.company.value||'').trim()},
+      {name:'email',value:email},
+      {name:'message',value:(form.message.value||'').trim()},
+      {name:'idioma_sitio',value:LANG},
+      {name:'campaign_source',value:'WebSite'}
+    ].filter(function(f){return f.value!=='';});
+    var payload={
+      fields:fields,
+      context:{pageUri:location.href,pageName:document.title},
+      legalConsentOptions:{consent:{consentToProcess:true,text:T.process,
+        communications:[{value:!!document.getElementById('af-comm').checked,subscriptionTypeId:2762054456,text:T.consent}]}}
+    };
+    var hutk=ck('hubspotutk'); if(hutk) payload.context.hutk=hutk;
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+PORTAL+'/'+FORM_ID,{
+      method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)
+    }).then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j};});})
+    .then(function(res){ if(res.ok){form.style.display='none';setStatus(T.ok,'ok');}
+      else{btn.disabled=false;setStatus(T.err,'err');} })
+    .catch(function(){btn.disabled=false;setStatus(T.err,'err');});
   });
 })();
 </script>
